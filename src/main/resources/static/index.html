@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CarbonTrack</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="topbar">
+
+    <div class="logo">
+        🌿 CarbonTrack
+    </div>
+
+    <nav>
+        <button onclick="showSection('dashboard')">
+            Dashboard
+        </button>
+
+        <button onclick="showSection('activities')">
+            Activities
+        </button>
+
+        <button onclick="showSection('challenges')">
+            Challenges
+        </button>
+
+        <button onclick="showSection('leaderboard')">
+            Leaderboard
+        </button>
+    </nav>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <!-- DASHBOARD -->
+
+    <section id="dashboard" class="section active">
+
+        <div class="hero">
+
+            <div>
+                <p class="eyebrow">
+                    HOUSEHOLD SUSTAINABILITY
+                </p>
+
+                <h1>
+                    Your carbon footprint,
+                    <span>made visible.</span>
+                </h1>
+
+                <p>
+                    Track your everyday habits, understand your
+                    household footprint and reduce it month by month.
+                </p>
+
+                <button
+                        class="primary-btn"
+                        onclick="showSection('activities')">
+
+                    + Log Activity
+
+                </button>
+            </div>
+
+            <div class="hero-icon">
+                🌎
+            </div>
+
+        </div>
+
+
+        <!-- STAT CARDS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🌱
+                </div>
+
+                <p>Monthly Footprint</p>
+
+                <h2 id="monthlyCarbon">
+                    --
+                </h2>
+
+                <span>kg CO₂e</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📉
+                </div>
+
+                <p>Monthly Reduction</p>
+
+                <h2 id="reduction">
+                    --
+                </h2>
+
+                <span>vs previous month</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⚡
+                </div>
+
+                <p>Electricity</p>
+
+                <h2 id="electricity">
+                    --
+                </h2>
+
+                <span>kWh</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🏆
+                </div>
+
+                <p>Leaderboard Rank</p>
+
+                <h2 id="rank">
+                    --
+                </h2>
+
+                <span>this month</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- DASHBOARD CONTENT -->
+
+        <div class="dashboard-grid">
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <p class="eyebrow">
+                            MONTHLY PROGRESS
+                        </p>
+
+                        <h2>Carbon Overview</h2>
+                    </div>
+
+                    <span class="badge">
+                        September 2026
+                    </span>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <div class="fake-chart">
+
+                        <div class="chart-line"></div>
+
+                        <div class="chart-point"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="chart-labels">
+
+                    <span>August</span>
+
+                    <span>September</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTION -->
+
+            <div class="card">
+
+                <p class="eyebrow">
+                    QUICK ACTION
+                </p>
+
+                <h2>Keep tracking 🌱</h2>
+
+                <p class="muted">
+                    Log your daily commute, electricity usage
+                    and waste to keep your footprint accurate.
+                </p>
+
+                <button
+                        class="primary-btn full"
+                        onclick="showSection('activities')">
+
+                    + Add Today's Activity
+
+                </button>
+
+                <div class="challenge-box">
+
+                    <div class="challenge-icon">
+                        🎯
+                    </div>
+
+                    <div>
+                        <strong>
+                            30% Green Reduction
+                        </strong>
+
+                        <span>
+                            Current progress
+                        </span>
+                    </div>
+
+                    <b id="challengeProgress">
+                        --
+                    </b>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RECENT ACTIVITIES -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <div>
+                    <p class="eyebrow">
+                        RECENT ACTIVITY
+                    </p>
+
+                    <h2>Latest Logs</h2>
+                </div>
+
+                <button
+                        class="text-btn"
+                        onclick="showSection('activities')">
+
+                    View all →
+
+                </button>
+
+            </div>
+
+            <div id="recentActivities">
+
+                <p class="muted">
+                    Loading activities...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ACTIVITIES ================= -->
+
+    <section id="activities" class="section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    DAILY TRACKING
+                </p>
+
+                <h1>Activities</h1>
+
+                <p>
+                    Record your household's daily activities.
+                </p>
+
+            </div>
+
+            <button
+                    class="primary-btn"
+                    onclick="openActivityModal()">
+
+                + Add Activity
+
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <div id="activityTable">
+
+                <p class="muted">
+                    Loading activities...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CHALLENGES ================= -->
+
+    <section id="challenges" class="section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    COMMUNITY
+                </p>
+
+                <h1>Challenges</h1>
+
+                <p>
+                    Reduce your footprint together.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="challengeCards">
+
+            <p class="muted">
+                Loading challenges...
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= LEADERBOARD ================= -->
+
+    <section id="leaderboard" class="section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    COMMUNITY PROGRESS
+                </p>
+
+                <h1>Leaderboard</h1>
+
+                <p>
+                    Ranked by percentage reduction from the
+                    previous month.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div id="leaderboardTable">
+
+                <p class="muted">
+                    Loading leaderboard...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- ================= ACTIVITY MODAL ================= -->
+
+<div
+        id="activityModal"
+        class="modal">
+
+    <div class="modal-content">
+
+        <button
+                class="close-btn"
+                onclick="closeActivityModal()">
+
+            ×
+
+        </button>
+
+        <p class="eyebrow">
+            NEW ACTIVITY
+        </p>
+
+        <h2>
+            Log Daily Activity
+        </h2>
+
+        <form id="activityForm">
+
+            <label>
+                Date
+
+                <input
+                        type="date"
+                        id="activityDate"
+                        required>
+
+            </label>
+
+
+            <label>
+                Commute Mode
+
+                <select
+                        id="commuteMode"
+                        required>
+
+                    <option value="CAR">
+                        🚗 Car
+                    </option>
+
+                    <option value="BUS">
+                        🚌 Bus
+                    </option>
+
+                    <option value="BIKE">
+                        🚲 Bike
+                    </option>
+
+                    <option value="WALK">
+                        🚶 Walking
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+                Commute Distance (km)
+
+                <input
+                        type="number"
+                        id="commuteDistance"
+                        min="0"
+                        step="0.1"
+                        placeholder="Example: 10"
+                        required>
+
+            </label>
+
+
+            <label>
+                Electricity Consumption (kWh)
+
+                <input
+                        type="number"
+                        id="electricityInput"
+                        min="0"
+                        step="0.1"
+                        placeholder="Example: 8.5"
+                        required>
+
+            </label>
+
+
+            <label>
+                Waste Generated (kg)
+
+                <input
+                        type="number"
+                        id="wasteInput"
+                        min="0"
+                        step="0.1"
+                        placeholder="Example: 2"
+                        required>
+
+            </label>
+
+
+            <button
+                    type="submit"
+                    class="primary-btn full">
+
+                Save Activity 🌱
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="app.js"></script>
+
+</body>
+</html>
